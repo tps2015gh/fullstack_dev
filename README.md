@@ -9,7 +9,7 @@ A modern, standalone Windows system auditing toolset. This project consists of t
 ## 🎬 Credits & Team
 
 ### Producer & Director
-- **DELL**: Vision, direction, and product ownership.
+- **tps2015gh**: Vision, direction, and product ownership.
 
 ### Technical Architect & Implementation
 - **Gemini CLI (AI Model)**: System architecture design, Go agent development, CI4 backend implementation, and UI/UX styling.
