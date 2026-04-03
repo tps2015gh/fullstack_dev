@@ -71,5 +71,35 @@ Ensure you have **PHP 8.1+** and the **SQLite3** extension enabled.
    - **Username:** `admin`
    - **Password:** `password123`
 
+---
+
+## 🛠️ Troubleshooting: PHP Not Found
+
+If you see an error like `'php' is not recognized as an internal or external command`, you need to locate the PHP executable manually.
+
+### 1. Find PHP on Windows (CMD/PowerShell)
+Try searching for the `php.exe` file using these commands:
+```powershell
+# Search using the 'where' command
+where php.exe
+
+# Deep search if not in PATH (may take a moment)
+Get-ChildItem -Path C:\ -Filter php.exe -Recurse -ErrorAction SilentlyContinue
+```
+
+### 2. Common Paths (XAMPP/WAMP/PHP)
+On standard Windows installations, PHP is usually located in:
+- `C:\xampp-8-1-25\php\php.exe` (XAMPP versioned)
+- `C:\xampp\php\php.exe` (Standard XAMPP)
+- `C:\wamp64\bin\php\php[version]\php.exe` (WAMP)
+- `C:\php\php.exe` (Manual install)
+
+### 3. Usage with Absolute Path
+Once found, you can run commands by replacing `php` with the full path:
+```bash
+# Example: Running migrations with XAMPP PHP
+C:\xampp\php\php.exe spark migrate
+```
+
 ## 🛡️ License
 MIT License (c) 2026. See [LICENSE](LICENSE) for details.
