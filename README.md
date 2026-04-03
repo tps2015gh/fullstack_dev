@@ -124,6 +124,24 @@ C:\xampp\php\php.exe spark migrate
 
 ---
 
+## 🧩 Troubleshooting: Missing PHP Extensions
+
+If you see `The required PHP extension "sqlite3" is not loaded`, you must enable it.
+
+### 1. Temporary Fix (Flag)
+Add the extension flag directly to your command:
+```powershell
+php -d extension=php_sqlite3.dll spark migrate
+```
+
+### 2. Permanent Fix (php.ini)
+1. Find your `php.ini` (e.g., `C:\xampp\php\php.ini`).
+2. Search for `;extension=sqlite3`.
+3. Remove the `;` to enable it: `extension=sqlite3`.
+4. Save and restart your terminal.
+
+---
+
 ## 📦 Troubleshooting: Composer Not Found
 
 If you see `Could not open input file: composer.phar`, it means the PHP command cannot find the `composer.phar` file in your current directory.
