@@ -111,5 +111,35 @@ Once found, you can also run commands by replacing `php` with the full path:
 C:\xampp\php\php.exe spark migrate
 ```
 
+---
+
+## 📦 Troubleshooting: Composer Not Found
+
+If you see `Could not open input file: composer.phar`, it means the PHP command cannot find the `composer.phar` file in your current directory.
+
+### 1. Use the Absolute Path
+If you have `composer.phar` in the project root but are inside the `win-audit-dashboard` folder, use the path to the parent directory:
+```powershell
+# From win-audit-dashboard folder
+php ..\composer.phar install
+```
+
+### 2. Move Composer to the App Folder
+You can copy the `composer.phar` from the root into the dashboard folder:
+```powershell
+copy ..\composer.phar .
+php composer.phar install
+```
+
+### 3. Download Composer Fresh
+If the file is missing entirely, download it again using PHP:
+```powershell
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+# Now run install
+php composer.phar install
+```
+
 ## 🛡️ License
 MIT License (c) 2026. See [LICENSE](LICENSE) for details.
