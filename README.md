@@ -56,8 +56,11 @@ Ensure you have **PHP 8.1+** and the **SQLite3** extension enabled.
    php composer.phar install
    ```
 2. Setup environment:
-   - Copy `env` to `.env`.
-   - **Database Path Configuration:**
+   - **Environment Templates:**
+     - For **SQLite (Default)**: Rename `.env_sqlite` to `.env`.
+     - For **MySQL**: Rename `.env_mysql` to `.env` and create the `win_audit` database.
+     - **Original CI4**: `.env_ci4` is a backup of the original configuration.
+   - **Database Path Configuration (SQLite):**
      - **Lazy/Quick Start:** Set to your project root (easy to find):
        `database.default.database = D:\dev\fullstack_dev\win-audit-dashboard\database.sqlite`
      - **Advanced (Recommended):** Use the `writable` folder to keep the root clean and follow CI4 security standards:
