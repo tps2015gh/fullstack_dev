@@ -140,7 +140,8 @@ func printFixInstructions(phpIniPath string, missing []string) {
 			fmt.Printf("   ;extension=%s\n", ext)
 		}
 		fmt.Println("3. Remove the semicolon (;) from the start of those lines.")
-		fmt.Println("4. Save the file and restart your Web Server / Apache.")
+		fmt.Println("4. Save the file.")
+		fmt.Println(colorCyan + "5. IMPORTANT: Restart your server! (Ctrl+C and run 'php spark serve' again)" + colorReset)
 	} else {
 		fmt.Println(colorRed + "Could not locate php.ini to provide automated instructions." + colorReset)
 	}
