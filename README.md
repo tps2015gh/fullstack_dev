@@ -8,12 +8,14 @@ A modern, standalone Windows system auditing toolset. This project consists of t
 
 ## 🎬 Credits & Team
 
-### Producer & Director
-- **tps2015gh**: Vision, direction, and product ownership.
+### Project Supervisor
+- **tps2015gh**: Project leadership, requirements definition, code review, and development direction.
 
-### Technical Architect & Implementation
-- **Gemini CLI (AI Model)**: System architecture design, Go agent development, CI4 backend implementation, and UI/UX styling.
-- **Qwen Code (AI Model)**: Security patch tracking implementation, server detail view development, passive status monitoring design, build tooling, and documentation enhancements.
+### Starter Team (70% Foundation)
+- **Gemini CLI (AI Model)**: Initial system architecture, Go agent foundation, CI4 dashboard setup, core database migrations, and VS Code-inspired UI styling. Built 70% of the project foundation.
+
+### Growth Team (30% Enhancement)
+- **Qwen Code (AI Model)**: Security patch tracking system, server detail view with full audit data, passive status monitoring design, Go agent build tooling, security patch categorization, and documentation enhancements.
 
 ### Virtual Agent Team
 - **Lead Programmer**: Architecture design, core Go agent development, CI4 backend logic.
