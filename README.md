@@ -13,6 +13,7 @@ A modern, standalone Windows system auditing toolset. This project consists of t
 
 ### Technical Architect & Implementation
 - **Gemini CLI (AI Model)**: System architecture design, Go agent development, CI4 backend implementation, and UI/UX styling.
+- **Qwen Code (AI Model)**: Security patch tracking implementation, server detail view development, passive status monitoring design, build tooling, and documentation enhancements.
 
 ### Virtual Agent Team
 - **Lead Programmer**: Architecture design, core Go agent development, CI4 backend logic.
@@ -34,6 +35,23 @@ A modern, standalone Windows system auditing toolset. This project consists of t
 > "WinAudit 2026 represents an elegant balance between power and portability. By using **Go** for the agent, we achieve a high-performance, single-binary deployment that requires no runtime on target machines—a critical feature for security auditing. Choosing **CodeIgniter 4 with SQLite** for the dashboard provides a 'zero-config' management experience suitable for small teams or solo administrators.
 >
 > The VS Code-inspired UI isn't just aesthetic; it provides a familiar, high-contrast environment for technical users who need to process large amounts of system data quickly. This architecture is highly scalable for its intended scope and provides a solid foundation for future automated API-driven audit reporting."
+
+## 💡 Technical Opinion (from Qwen Code)
+> "WinAudit stands out as a **security-conscious, lightweight audit platform**. Unlike heavyweight enterprise tools like SCCM or Qualys, it achieves comprehensive system visibility without requiring agents that constantly phone home—a design that respects IDS/SOC monitoring boundaries and reduces network noise.
+>
+> **Key strengths I see:**
+> 1. **Passive Monitoring Philosophy**: Status is derived from audit timestamps, not active probing. This is critical in environments with strict SOC/IDS policies where unsolicited network traffic triggers alerts.
+> 2. **Security Patch Visibility**: The detailed patch tracking (categorizing Security Updates vs Cumulative vs Feature) gives administrators immediate insight into compliance posture without needing WSUS or Windows Update for Business dashboards.
+> 3. **Zero-Dependency Agent**: The Go-compiled binary requires no runtime, no .NET, no Python—just execute and get JSON. This makes it ideal for air-gapped networks, DMZ servers, or restricted environments where installing software is prohibited.
+> 4. **Portable Dashboard**: CI4 + SQLite means the entire management UI runs on a single PHP instance with no database server required—perfect for small teams or disconnected management stations.
+>
+> **Future opportunities:**
+> - Automated audit scheduling via Windows Task Scheduler deployment scripts
+> - Diff comparison between audit snapshots to detect configuration drift
+> - Export to PDF/CSV for compliance reporting and audit trails
+> - Multi-agent JSON aggregation for fleet-wide patch compliance dashboards
+>
+> This project proves that effective IT audit doesn't require enterprise bloatware—just clean data collection and thoughtful presentation."
 
 ---
 
