@@ -19,7 +19,15 @@ type AuditData struct {
 	HardwareInfo   HardwareInfo      `json:"hardware_info"`
 	NetworkInfo    []NetworkInterface `json:"network_info"`
 	SecurityInfo   SecurityInfo      `json:"security_info"`
-	SystemUpdates  []string          `json:"system_updates"`
+	SystemUpdates  []SystemUpdate    `json:"system_updates"`
+}
+
+type SystemUpdate struct {
+	HotFixID    string `json:"hotfix_id"`
+	Description string `json:"description"`
+	InstalledOn string `json:"installed_on"`
+	InstalledBy string `json:"installed_by"`
+	Type        string `json:"type"`
 }
 
 type OSInfo struct {
@@ -164,10 +172,43 @@ func getSecurityInfo() SecurityInfo {
 	}
 }
 
-func getHotfixes() []string {
-	raw := runPowerShell("Get-HotFix | Select-Object -First 10 -Property HotFixID | ForEach-Object { $_.HotFixID }")
-	if raw == "" { return []string{} }
-	return strings.Split(raw, "\n")
+func getHotfixes() []SystemUpdate {
+	// Get detailed hotfix information including security updates
+	raw := runPowerShell("Get-HotFix | Sort-Object InstalledOn -Descending | ForEach-Object { \"$($_.HotFixID)|$($_.Description)|$($_.InstalledOn)|$($_.InstalledBy)\" }")
+	if raw == "" { return []SystemUpdate{} }
+	
+	updates := []SystemUpdate{}
+	lines := strings.Split(raw, "\n")
+	for _, line := range lines {
+		parts := strings.Split(strings.TrimSpace(line), "|")
+		if len(parts) >= 4 {
+			hotfixID := parts[0]
+			description := parts[1]
+			installedOn := parts[2]
+			installedBy := parts[3]
+			
+			// Determine update type based on description
+			updateType := "Update"
+			if strings.Contains(strings.ToUpper(description), "SECURITY") {
+				updateType = "Security Update"
+			} else if strings.Contains(strings.ToUpper(description), "CUMULATIVE") {
+				updateType = "Cumulative Update"
+			} else if strings.Contains(strings.ToUpper(description), "FEATURE") {
+				updateType = "Feature Update"
+			} else if strings.Contains(strings.ToUpper(description), "SERVICE PACK") {
+				updateType = "Service Pack"
+			}
+			
+			updates = append(updates, SystemUpdate{
+				HotFixID:    hotfixID,
+				Description: description,
+				InstalledOn: installedOn,
+				InstalledBy: installedBy,
+				Type:        updateType,
+			})
+		}
+	}
+	return updates
 }
 
 func parseFloat(s string) float64 {

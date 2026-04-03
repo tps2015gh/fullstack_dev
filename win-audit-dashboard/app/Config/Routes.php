@@ -18,6 +18,7 @@ $routes->group('', ['filter' => 'auth'], function($routes) {
     $routes->get('/servers', 'Server::index');
     $routes->get('/servers/add', 'Server::add');
     $routes->post('/servers/save', 'Server::save');
+    $routes->get('/servers/detail/(:num)', 'Server::detail/$1');
     $routes->get('/servers/edit/(:num)', 'Server::edit/$1');
     $routes->post('/servers/update/(:num)', 'Server::update/$1');
     $routes->get('/servers/delete/(:num)', 'Server::delete/$1');

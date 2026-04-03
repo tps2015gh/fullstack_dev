@@ -223,6 +223,24 @@ go build -o winaudit-setup-path.exe
 
 ---
 
+## 📊 Server Status Monitoring
+
+### Server Status
+Server status is determined from the latest audit upload, **no active probing** (ping/port scan) to comply with IDS/SOC monitoring policies:
+- 🟢 **Online** (green): Server has been audited successfully
+- 🟡 **Warning** (yellow): Server needs attention
+- 🔴 **Offline** (red): Server is not responding or unreachable
+
+**Last Audit Time**: Shown below the status badge (HH:MM:SS format)
+
+### Security Patch Tracking
+Each server displays installed security patches from the latest audit:
+- **Security patch count**: Shown in red text under OS name
+- **Total patches**: Shown in gray if no security patches found
+- Patches are categorized by type: Security Update, Cumulative Update, Feature Update, etc.
+
+---
+
 ## 🛡️ License
 MIT License (c) 2026. See [LICENSE](LICENSE) for details.
 
