@@ -1,0 +1,26 @@
+create golang tools to gether data from server like in https://github.com/tps2015gh/win-audit-2026/  this is agent tools  that read data from server and pc  ,store data in file json 
+
+
+
+
+then 
+create php web app codeigniter 4 , use sqlite  db  , this app use by only 1 or a smalll group of person  
+for web application  add setup and tools to insert data and edit data 
+this will add to update status by upload file  
+this is standalone web appp easy to edit and fix 
+have user logon ,have dashboard to show server navigate server 
+can search update , also have history for each upload , can remove history too. 
+and design table db as entity relationship    , minimal but constrast , vscode theme style . 
+also can change page theme style too. 
+
+create agent team as 
+lead programmer , and Tester e2e , and QA  
+
+create PLAN.MD 
+create DababaseDesign.MD 
+create UX_UI.md 
+create program_disign.md 
+create E2E_Test.md 
+create Issue.MD 
+
+

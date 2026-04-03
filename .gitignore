@@ -1,0 +1,24 @@
+# Composer
+composer.phar
+vendor/
+
+# Go
+win-audit-agent/*.json
+win-audit-agent/win-audit-agent.exe
+win-audit-agent/win-audit-agent
+
+# CodeIgniter 4
+win-audit-dashboard/.env
+win-audit-dashboard/writable/database.sqlite
+win-audit-dashboard/writable/logs/*
+win-audit-dashboard/writable/cache/*
+win-audit-dashboard/writable/session/*
+win-audit-dashboard/writable/uploads/audits/*
+!win-audit-dashboard/writable/logs/index.html
+!win-audit-dashboard/writable/cache/index.html
+!win-audit-dashboard/writable/session/index.html
+!win-audit-dashboard/writable/uploads/audits/index.html
+
+# OS
+.DS_Store
+Thumbs.db
