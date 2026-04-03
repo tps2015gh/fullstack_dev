@@ -94,8 +94,18 @@ On standard Windows installations, PHP is usually located in:
 - `C:\wamp64\bin\php\php[version]\php.exe` (WAMP)
 - `C:\php\php.exe` (Manual install)
 
-### 3. Usage with Absolute Path
-Once found, you can run commands by replacing `php` with the full path:
+### 3. Add to Path Temporarily (PowerShell)
+If you found the PHP directory (e.g., `C:\xampp\php\`), you can add it to your current PowerShell session's path to use the `php` command directly:
+```powershell
+# Replace the path with your actual PHP directory
+$env:Path += ";C:\xampp\php\"
+
+# Now you can run spark commands normally
+php spark migrate
+```
+
+### 4. Usage with Absolute Path
+Once found, you can also run commands by replacing `php` with the full path:
 ```bash
 # Example: Running migrations with XAMPP PHP
 C:\xampp\php\php.exe spark migrate
