@@ -39,6 +39,14 @@ A modern, standalone Windows system auditing toolset. This project consists of t
 
 ## 🚀 Setup Instructions
 
+### 0. Quick Setup Check (Doctor Tool)
+Before starting, use the **System Doctor** to verify your environment:
+```bash
+cd tools/config-checker
+go run main.go
+```
+This will check for **PHP**, **Extensions** (sqlite3, mysqli), **.env** files, and project directory health.
+
 ### 1. Go Audit Agent
 Ensure you have [Go](https://go.dev/) installed.
 ```bash
@@ -172,3 +180,4 @@ php composer.phar install
 
 ## 🛡️ License
 MIT License (c) 2026. See [LICENSE](LICENSE) for details.
+
