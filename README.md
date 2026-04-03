@@ -178,6 +178,24 @@ php -r "unlink('composer-setup.php');"
 php composer.phar install
 ```
 
+### 5. Setting PHP Path Persistently (Doctor Tool)
+If PHP is not in your system's PATH, use this Go utility to add your PHP directory permanently to the User PATH environment variable.
+
+**1. Build the tool:**
+```bash
+cd tools/path-setter
+go build -o winaudit-setup-path.exe
+```
+
+**2. Run the tool:**
+Execute the compiled program and enter the full path to your PHP directory when prompted (e.g., `C:\xampp-8-1-25\php`).
+```bash
+.\winaudit-setup-path.exe
+```
+Follow the on-screen instructions. You may need to close and reopen your terminal for the changes to take full effect.
+
+---
+
 ## 🛡️ License
 MIT License (c) 2026. See [LICENSE](LICENSE) for details.
 
