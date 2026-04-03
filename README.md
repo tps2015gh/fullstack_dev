@@ -57,7 +57,12 @@ Ensure you have **PHP 8.1+** and the **SQLite3** extension enabled.
    ```
 2. Setup environment:
    - Copy `env` to `.env`.
-   - Configure `database.default.database = D:/absolute/path/to/writable/database.sqlite`.
+   - **Database Path Configuration:**
+     - **Lazy/Quick Start:** Set to your project root (easy to find):
+       `database.default.database = D:\dev\fullstack_dev\win-audit-dashboard\database.sqlite`
+     - **Advanced (Recommended):** Use the `writable` folder to keep the root clean and follow CI4 security standards:
+       `database.default.database = D:\dev\fullstack_dev\win-audit-dashboard\writable\database.sqlite`
+     - *Note: Always use absolute paths on Windows to avoid "Unable to open database" errors.*
 3. Run migrations and seeder:
    ```bash
    php spark migrate
