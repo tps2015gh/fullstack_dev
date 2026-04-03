@@ -178,21 +178,48 @@ php -r "unlink('composer-setup.php');"
 php composer.phar install
 ```
 
-### 5. Setting PHP Path Persistently (Doctor Tool)
+### 5. Setting PHP Path Persistently (Path Setter Tool)
 If PHP is not in your system's PATH, use this Go utility to add your PHP directory permanently to the User PATH environment variable.
 
-**1. Build the tool:**
+**What it does:**
+- Automatically adds your PHP directory to the Windows User PATH environment variable
+- Validates that `php.exe` exists in the specified directory
+- Prevents duplicate entries (checks if path already exists)
+- Uses PowerShell to make persistent environment changes
+
+**Option A: Run directly with Go (No build required)**
+```bash
+cd tools/path-setter
+go run main.go
+```
+
+**Option B: Build the executable**
 ```bash
 cd tools/path-setter
 go build -o winaudit-setup-path.exe
 ```
 
-**2. Run the tool:**
-Execute the compiled program and enter the full path to your PHP directory when prompted (e.g., `C:\xampp-8-1-25\php`).
-```bash
-.\winaudit-setup-path.exe
-```
-Follow the on-screen instructions. You may need to close and reopen your terminal for the changes to take full effect.
+**Running the tool:**
+1. Execute the program (either `go run main.go` or `.\winaudit-setup-path.exe`)
+2. When prompted, enter the **full directory path** containing `php.exe` (not the path to php.exe itself)
+   - ✅ Correct: `C:\xampp\php` or `C:\xampp-8-1-25\php`
+   - ❌ Incorrect: `C:\xampp\php\php.exe`
+3. The tool will:
+   - Validate that `php.exe` exists in the directory
+   - Add the directory to your User PATH environment variable
+   - Display success/failure messages with colored output
+4. **Important:** Close and reopen your terminal for the PATH changes to take effect
+
+**Common PHP Directory Paths:**
+- `C:\xampp\php` (Standard XAMPP installation)
+- `C:\xampp-8-1-25\php` (XAMPP with versioned folder)
+- `C:\wamp64\bin\php\php[version]` (WAMP installation)
+- `C:\php` (Manual PHP installation)
+
+**Troubleshooting:**
+- **"php.exe not found"**: Double-check that you entered the **directory** path, not the full path to `php.exe`
+- **Permission errors**: The tool modifies User PATH, which should work without admin rights. If it fails, run the tool as Administrator
+- **Changes not taking effect**: Close all open terminal windows and open a new one, or run `$env:Path += ";C:\xampp\php"` in your current PowerShell session for immediate testing
 
 ---
 

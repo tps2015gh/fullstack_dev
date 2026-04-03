@@ -34,25 +34,21 @@ func main() {
 		return
 	}
 
-	fmt.Printf(colorYellow+"Attempting to add '%s' to your User PATH...
-"+colorReset, phpDir)
+	fmt.Printf(colorYellow+"Attempting to add '%s' to your User PATH...\n"+colorReset, phpDir)
 
 	if err := addToUserPath(phpDir); err != nil {
-		fmt.Printf(colorRed+"Failed to add path to environment variables: %v
-"+colorReset, err)
+		fmt.Printf(colorRed+"Failed to add path to environment variables: %v\n"+colorReset, err)
 		fmt.Println(colorYellow + "Hint: You might need to run this program as an administrator for system-wide changes, or manually add the path via System Properties -> Environment Variables." + colorReset)
 	} else {
 		fmt.Println(colorGreen + "Successfully added PHP directory to your User PATH!" + colorReset)
-		fmt.Println(colorYellow + "
-IMPORTANT: For changes to take effect in current terminals, close and reopen them." + colorReset)
+		fmt.Println(colorYellow + "\nIMPORTANT: For changes to take effect in current terminals, close and reopen them." + colorReset)
 	}
 }
 
 func promptForPHPDir() string {
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Print("Enter the directory containing php.exe (e.g., C:\xampp\php): ")
-	input, _ := reader.ReadString('
-')
+	fmt.Print("Enter the directory containing php.exe (e.g., C:\\xampp\\php): ")
+	input, _ := reader.ReadString('\n') // Corrected to use '\n'
 	dir := strings.TrimSpace(input)
 	return dir
 }
