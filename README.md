@@ -50,6 +50,9 @@ This generates an `audit_[hostname]_[timestamp].json` file.
 
 ### 2. Dashboard (CI4)
 Ensure you have **PHP 8.1+** and the **SQLite3** extension enabled.
+
+> **⚠️ CRITICAL NOTE:** CodeIgniter 4 **ONLY** reads the file named exactly **`.env`** (with a leading dot). Files like `env`, `.env_sqlite`, or `.env_mysql` are just templates and will be ignored by the system until renamed to `.env`.
+
 1. Install dependencies:
    ```bash
    cd win-audit-dashboard
@@ -57,9 +60,9 @@ Ensure you have **PHP 8.1+** and the **SQLite3** extension enabled.
    ```
 2. Setup environment:
    - **Environment Templates:**
-     - For **SQLite (Default)**: Rename `.env_sqlite` to `.env`.
-     - For **MySQL**: Rename `.env_mysql` to `.env` and create the `win_audit` database.
-     - **Original CI4**: `.env_ci4` is a backup of the original configuration.
+     - To use **SQLite (Default)**: Copy `.env_sqlite` and rename it to **`.env`**.
+     - To use **MySQL**: Copy `.env_mysql` and rename it to **`.env`**.
+     - **Original CI4**: `.env_ci4` is a backup of the factory settings.
    - **Database Path Configuration (SQLite):**
      - **Lazy/Quick Start:** Set to your project root (easy to find):
        `database.default.database = D:\dev\fullstack_dev\win-audit-dashboard\database.sqlite`
